@@ -1,0 +1,157 @@
+body {
+    margin: auto;
+	font-family: Arial, Helvetica, sans-serif;
+    background-color: #0E1217;
+}
+
+#main-menu {
+    background-color: #151A24;
+    margin: auto;
+    display: flex;
+    padding: 1%;
+    height: 15vh;
+    box-shadow: 0px 1px 8px 2px black;
+}
+
+#main-menu ul {
+    list-style-type: none;
+    width: 80%;
+    text-align: right;
+}
+
+#main-menu ul li {
+    display: inline-block;
+    margin-left: 2%;
+    margin-top: 5.5%;
+}
+
+#main-menu ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.2s ease-out;
+}
+
+#main-menu ul li a:hover {
+    color: #1784D6;
+    text-decoration: underline;
+}
+
+#main-menu img {
+    display: inline-block;
+    width: 20vh;
+}
+
+
+/* BEST MOVIE */
+#best-movie {
+    background-color: #151A24;
+    padding: 1%;
+    display: flex;
+    width: 90%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+#best-movie .about-movie {
+    width: 90%;
+    color: #A2A2A2;
+    text-align: center;
+    margin-top: 3%;
+}
+
+#best-movie .about-movie h2 {
+    color: white;
+}
+
+#best-movie .about-movie .btn-play, #best-movie .about-movie .btn-more {
+    width: 20%;
+    padding: 2%;
+    background-color: #13649F;
+    color: white;
+    border-width: 0;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-out;
+}
+
+#best-movie .about-movie .btn-play:hover, #best-movie .about-movie .btn-more:hover {
+    background-color: #1784D6;
+}
+
+#best-movie img {
+    width: 30vh;
+}
+
+#comedy, #thriller, #horror, #best-rated {
+    color: rgb(187, 187, 187);
+    text-align: center;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 2%;
+}
+
+#comedy img, #thriller img, #horror img, #best-rated img {
+    margin-left: .5%;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #151A24;
+    margin: auto;
+    padding: 1%;
+    text-align: center;
+    box-shadow: 10px 0px 10px 3px black;
+}
+
+.footer #menu-footer ul {
+    list-style-type: none;
+    width: 95%;
+}
+
+.footer #menu-footer ul li {
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.footer #menu-footer ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.2s ease-out;
+}
+
+.footer #menu-footer ul li a:hover {
+    color: #1784D6;
+    text-decoration: underline;
+}
+
+/* TEST */
+
+.container {
+    visibility: hidden;
+}
+
+.container .overlay {
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: #333333d3;
+}
+
+.container .content {
+    background-color: white;
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    width: 60%;
+    padding: 1%;
+}
+
+.container .content .btn-close {
+    position: absolute;
+    right: 15px;
+    padding: 1%;
+    background-color: red;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
