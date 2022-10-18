@@ -44,6 +44,9 @@ function bestMovie(linkOfPage) {
             let imgElement = document.createElement("img");
             imgElement.src = datas.results[0].image_url;
 
+            let title = document.querySelector(".title-best-movie");
+            title.innerText = datas.results[0].title;
+
             let myElement = document.getElementById("best-movie");
             myElement.appendChild(imgElement);
         })
@@ -135,6 +138,13 @@ function openModal(idMovie) {
 
             directors = document.querySelector(".directors");
             directors.innerText = realisateurs;
+
+            boxOffice = document.querySelector(".box-office");
+            if (datas.worldwide_gross_income == null) {
+                boxOffice.innerText = "Non renseigné";
+            } else {
+                boxOffice.innerText = `${datas.worldwide_gross_income} USD`;
+            }
 
             let acteurs = "";
             for (acteur of datas.actors) {

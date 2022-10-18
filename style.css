@@ -78,7 +78,7 @@ body {
 }
 
 #best-movie img {
-    width: 30vh;
+    width: 10%;
 }
 
 /* FILMS PAR CATEGORIE */
@@ -169,7 +169,7 @@ footer #menu-footer ul li a:hover {
     color: white;
 }
 
-.info-details p .actors, .info-details p .directors, .info-details p .score-imdb {
+.info-details p .actors, .info-details p .directors, .info-details p .score-imdb, p .box-office {
     color:#13649F;
 }
 
@@ -299,6 +299,7 @@ footer #menu-footer ul li a:hover {
     #best-movie img {
         padding-top: 2%;
         margin: auto;
+        width: 80%;
     }
 
     #best-movie aside {
