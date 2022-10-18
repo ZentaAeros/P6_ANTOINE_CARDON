@@ -4,12 +4,12 @@ body {
     background-color: #0E1217;
 }
 
+/* MENU PRINCIPAL */ 
 #main-menu {
     background-color: #151A24;
     margin: auto;
     display: flex;
     padding: 1%;
-    height: 15vh;
     box-shadow: 0px 1px 8px 2px black;
 }
 
@@ -42,7 +42,7 @@ body {
 }
 
 
-/* BEST MOVIE */
+/* SECTION FILM N°1 */
 #best-movie {
     background-color: #151A24;
     padding: 1%;
@@ -81,6 +81,7 @@ body {
     width: 30vh;
 }
 
+/* FILMS PAR CATEGORIE */
 #comedy, #thriller, #horror, #best-rated {
     color: rgb(187, 187, 187);
     text-align: center;
@@ -115,7 +116,7 @@ body {
 }
 
 /* FOOTER */
-.footer {
+footer {
     background-color: #151A24;
     margin: auto;
     padding: 1%;
@@ -123,28 +124,28 @@ body {
     box-shadow: 10px 0px 10px 3px black;
 }
 
-.footer #menu-footer ul {
+footer #menu-footer ul {
     list-style-type: none;
-    width: 95%;
+    width: 90%;
 }
 
-.footer #menu-footer ul li {
+footer #menu-footer ul li {
     display: inline-block;
     margin-left: 2%;
 }
 
-.footer #menu-footer ul li a {
+footer #menu-footer ul li a {
     text-decoration: none;
     color: white;
     transition: color 0.2s ease-out;
 }
 
-.footer #menu-footer ul li a:hover {
+footer #menu-footer ul li a:hover {
     color: #1784D6;
     text-decoration: underline;
 }
 
-/* TEST */
+/* MODAL */
 
 .informations {
     display: flex;
@@ -155,9 +156,27 @@ body {
     margin-right: 2%;
     width: 30%;
 }
+
+.modal-details-movie, .info-details p {
+    color: rgb(177, 177, 177);
+}
+
+.info-details {
+    font-size: 14px;
+}
+
+.info-details .resume-movie {
+    color: white;
+}
+
+.info-details p .actors, .info-details p .directors, .info-details p .score-imdb {
+    color:#13649F;
+}
+
 .modal {
     visibility: hidden;
 }
+
 .modal .overlay {
     position: fixed;
     top:0;
@@ -195,7 +214,7 @@ body {
 }
 
 
-/* TEST */
+/* CONTAINER IMAGE FILM */
 
 .movie-container {
     position: relative;
@@ -248,4 +267,67 @@ body {
 
 .movie-container .movie-content .movie-controls button:hover {
     background-color: #1784D6;
+}
+
+
+/* VERSION MOBILE */
+@media screen and (max-width: 600px) {
+    #main-menu {
+        flex-direction: column;
+        padding-bottom: 5%;
+
+    }
+
+    #main-menu a, #main-menu ul {
+        margin: auto;
+        width: 90%;
+        text-align: center;
+    }
+
+    #main-menu ul li{
+        display: block;
+        width: 90%;
+    }
+
+    #best-movie {
+        flex-direction: column-reverse;
+        width: 90%;
+        margin-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    #best-movie img {
+        padding-top: 2%;
+        margin: auto;
+    }
+
+    #best-movie aside {
+        margin: auto;
+    }
+
+    #best-movie .about-movie .btn-play, #best-movie .about-movie .btn-more {
+        width: 100%;
+        margin-top: 2%;
+    }
+
+    .informations {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .informations img {
+        padding-top: 5%;
+        width: 50%;
+        margin: auto;
+    }
+    .modal .content {
+        top: 2%;
+        left: 4%;
+        width: 90%;
+        padding: 1%;
+    }
+
+    footer #menu-footer ul li {
+        display: block;
+    }
 }

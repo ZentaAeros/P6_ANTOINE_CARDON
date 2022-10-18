@@ -1,16 +1,51 @@
-function createElementMovies(img, idElement) {
-    let imgElement = document.createElement("img");
-    imgElement.src = img;
+function createContainerMovie(idMovie, titleMovie, imgMovie, content) {
+    let movieContainer = document.createElement("figure");
+    movieContainer.classList.add("movie-container");
 
-    let myElement = document.getElementById(idElement);
-    myElement.appendChild(imgElement);
+    movieContent = document.createElement("figcaption");
+    movieContent.classList.add("movie-content");
+
+    let movieControls = document.createElement("div");
+    movieControls.classList.add("movie-controls");
+
+    let buttonPlay = document.createElement("button");
+    buttonPlay.innerText = "Lecture";
+
+    let buttonDetails = document.createElement("button");
+    buttonDetails.innerText = "Détails";
+    buttonDetails.setAttribute("onclick", `openModal('${idMovie}')`);
+    buttonDetails.classList.add("open-modal");
+
+    let movieTitle = document.createElement("h3");
+    movieTitle.innerText = titleMovie;
+
+    let movieImage = document.createElement("img");
+    movieImage.src = imgMovie;
+    movieImage.classList.add("movie-img");
+
+    movieContainer.appendChild(movieImage);
+    movieContainer.appendChild(movieContent);
+
+    movieControls.appendChild(buttonPlay);
+    movieControls.appendChild(buttonDetails);
+
+    movieContent.appendChild(movieTitle);
+    movieContent.appendChild(movieControls);
+
+    content.appendChild(movieContainer);
+
+    return content
 }
 
 function bestMovie(linkOfPage) {
     fetch(linkOfPage)
         .then(responses => responses.json())
         .then(datas => {
-            createElementMovies(datas.results[0].image_url, "best-movie");
+            let imgElement = document.createElement("img");
+            imgElement.src = datas.results[0].image_url;
+
+            let myElement = document.getElementById("best-movie");
+            myElement.appendChild(imgElement);
         })
 }
 
@@ -21,11 +56,7 @@ function createSectionCategory(name, categoryName = "") {
     } else {
         name = "best-rated";
     }
-    let section = document.createElement("section");
-    section.setAttribute("id", name);
-
-    let titleCategory = document.createElement("h2");
-    titleCategory.innerText = `${categoryName}`;
+    let section = document.getElementById(name);
 
     let content = document.createElement("section");
     content.setAttribute("id", `content-${name}`);
@@ -33,91 +64,24 @@ function createSectionCategory(name, categoryName = "") {
     fetch(`http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=${genre}`)
         .then(responses => responses.json())
         .then(datas => {
-            for (let data of datas.results) {
-                let movieContainer = document.createElement("figure");
-                movieContainer.classList.add("movie-container");
-
-                movieContent = document.createElement("figcaption");
-                movieContent.classList.add("movie-content");
-
-                let movieControls = document.createElement("div");
-                movieControls.classList.add("movie-controls");
-
-                let buttonPlay = document.createElement("button");
-                buttonPlay.innerText = "Lecture";
-
-                let buttonDetails = document.createElement("button");
-                buttonDetails.innerText = "Détails";
-                buttonDetails.setAttribute("onclick", `openModal('${data.id}')`);
-                buttonDetails.classList.add("open-modal");
-
-                let movieTitle = document.createElement("h3");
-                movieTitle.innerText = data.title;
-
-                let movieImage = document.createElement("img");
-                movieImage.src = data.image_url;
-                movieImage.classList.add("movie-img");
-
-                movieContainer.appendChild(movieImage);
-                movieContainer.appendChild(movieContent);
-
-                movieControls.appendChild(buttonPlay);
-                movieControls.appendChild(buttonDetails);
-
-                movieContent.appendChild(movieTitle);
-                movieContent.appendChild(movieControls);
-
-
-
-                content.appendChild(movieContainer);
+            if (name == "best-rated") {
+                var number = 1;
+            } else {
+                var number = 0;
+            }
+            for (let i = number; i < 5; i++) {
+                createContainerMovie(datas.results[i].id, datas.results[i].title, datas.results[i].image_url, content);
             }
             fetch(datas.next)
                 .then(responses => responses.json())
                 .then(datas => {
-                    for (let i = 0; i < 2; i++) {
-                        let movieContainer = document.createElement("figure");
-                        movieContainer.classList.add("movie-container");
-
-                        movieContent = document.createElement("figcaption");
-                        movieContent.classList.add("movie-content");
-
-                        let movieControls = document.createElement("div");
-                        movieControls.classList.add("movie-controls");
-
-                        let buttonPlay = document.createElement("button");
-                        buttonPlay.innerText = "Lecture";
-
-                        let buttonDetails = document.createElement("button");
-                        buttonDetails.innerText = "Détails";
-                        buttonDetails.setAttribute("onclick", `openModal('${datas.results[i].id}')`);
-                        buttonDetails.classList.add("open-modal");
-
-                        let movieTitle = document.createElement("h3");
-                        movieTitle.innerText = datas.results[i].title;
-
-                        let movieImage = document.createElement("img");
-                        movieImage.src = datas.results[i].image_url;
-                        movieImage.classList.add("movie-img");
-
-                        movieContainer.appendChild(movieImage);
-                        movieContainer.appendChild(movieContent);
-
-                        movieControls.appendChild(buttonPlay);
-                        movieControls.appendChild(buttonDetails);
-
-                        movieContent.appendChild(movieTitle);
-                        movieContent.appendChild(movieControls);
-
-
-
-                        content.appendChild(movieContainer);
+                    for (let i = 0; i < 2 + number; i++) {
+                        createContainerMovie(datas.results[i].id, datas.results[i].title, datas.results[i].image_url, content);
                     }
                 })
         })
 
-    section.appendChild(titleCategory);
     section.appendChild(content);
-    document.getElementById("categorys").appendChild(section);
     let btnLeft = document.createElement("button");
     btnLeft.classList.add("btn-left");
     btnLeft.innerHTML = '<i class="fa-solid fa-2x fa-arrow-left-long"></i>'
@@ -130,22 +94,7 @@ function createSectionCategory(name, categoryName = "") {
 
     section.appendChild(btnLeft);
     section.appendChild(btnRight);
-
-
-
 }
-
-bestMovie('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score');
-
-
-createSectionCategory("", "Les films du moment")
-createSectionCategory("horror", "Les films d'horreurs du moment");
-createSectionCategory("comedy", "Les comédies du moment");
-createSectionCategory("thriller", "Les thrillers du moment");
-
-
-
-
 
 function moveLeft(categoryName) {
     document.getElementById(categoryName).style.left = "0px";
@@ -215,3 +164,12 @@ function openModal(idMovie) {
     })
     modal.style.visibility = "visible";
 }
+
+bestMovie('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score');
+
+
+createSectionCategory("", "Les films du moment")
+createSectionCategory("horror", "Les films d'horreurs du moment");
+createSectionCategory("comedy", "Les comédies du moment");
+createSectionCategory("thriller", "Les thrillers du moment");
+

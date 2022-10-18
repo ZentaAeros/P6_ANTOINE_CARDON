@@ -13,15 +13,16 @@
 
 <body>
     <nav id="main-menu">
-        <a href=""><img src="img/logo_dark.png" alt=""></a>
+        <a href="">
+            <img src="img/logo_dark.png" alt="">
+        </a>
         <ul>
             <li><a href="">ACCUEIL</a></li>
             <li><a href="">MA LISTE</a></li>
             <li><a href=""><i class="fa-solid fa-2x fa-user"></i></a></li>
         </ul>
     </nav>
-
-    <section id="best-movie">
+    <div id="best-movie">
         <aside class="about-movie">
             <h2>Hopeful Notes</h2>
             <p>2010 - Drama - 94 minutes</p>
@@ -29,39 +30,47 @@
             <button class="btn-play">Lecture</button>
             <button onclick="openModal('1508669')" class="open-modal btn-more display-container">Détails</button>
         </aside>
-    </section>
-    <section id="categorys">
-
-    </section>
-    <article class="modal">
+    </div>
+    <div id="categorys">
+        <section id="best-rated">
+            <h2>Les films du moment</h2>
+        </section>
+        <section id="horror">
+            <h2>Les films d'horreur du moment</h2>
+        </section>
+        <section id="comedy">
+            <h2>Les comédies du moment</h2>
+        </section>
+        <section id="thriller">
+            <h2>Les thrillers du moment</h2>
+        </section>
+    </div>
+    <div class="modal">
         <div class="overlay display-container"></div>
-        <section class="content">
+        <div class="content">
             <button class="btn-close display-container">X</button>
             <aside class="informations">
                 <img class="cover-movie" src="#" alt="#">
-                <section style="font-size: 14px;">
-                    <h2 class="modal-title-movie"></h2>
-                    <p class="modal-details-movie" style="color: rgb(177, 177, 177);"></p>
-                    <p class="rated" style="color: rgb(177, 177, 177);"></p>
-                    <p style="color: rgb(177, 177, 177);">Score imdb : <span class="score-imdb"
-                            style="color:#13649F;"></span></p>
-                    <p style="color: rgb(177, 177, 177);">Réalisateurs : <span class="directors"
-                            style="color:#13649F;"></span></p>
-                    <p style="color: rgb(177, 177, 177);">Acteurs : <span class="actors" style="color:#13649F;"></span>
-                    </p>
+                <section class="info-details">
+                    <h2 class="modal-title-movie">title</h2>
+                    <p class="modal-details-movie"></p>
+                    <p class="rated"></p>
+                    <p>Score imdb : <span class="score-imdb"></span></p>
+                    <p>Réalisateurs : <span class="directors"></span></p>
+                    <p>Acteurs : <span class="actors"></span></p>
                     <p class="resume-movie"></p>
                 </section>
             </aside>
-        </section>
-    </article>
+        </div>
+    </div>
+    <footer>
+        <nav id="menu-footer">
+            <ul>
+                <li><a href="#">MENTIONS LEGALES</a></li>
+                <li><a href="#">CGV</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
-<footer class="footer">
-    <nav id="menu-footer">
-        <ul>
-            <li><a href="#">MENTIONS LEGALES</a></li>
-            <li><a href="#">CGV</a></li>
-        </ul>
-    </nav>
-</footer>
 
 </html>
